@@ -1,1 +1,24 @@
-
+{% extends "base.html" %}
+{% block title %}Connexion à mon espace{% endblock %}
+{% block content %}
+<div class="page-heading"><p class="eyebrow">VOTRE ESPACE EN LIGNE</p><h1>Connexion à mon espace</h1><p>Identifiez-vous pour accéder à vos services.</p></div>
+<div class="auth-layout">
+  <section class="card auth-card" aria-labelledby="login-title">
+    <div class="card-topline"></div><h2 id="login-title">Je m’identifie</h2>
+    <p class="muted">Tous les champs sont obligatoires.</p>
+    <form data-demo-form><noscript><p class="notice">Activez JavaScript pour essayer ce formulaire de démonstration.</p></noscript><fieldset data-demo-fields disabled>
+      <fieldset><legend>Vous êtes</legend><div class="radio-group"><label><input type="radio" name="account_type" value="contribuable" checked> Un particulier</label><label><input type="radio" name="account_type" value="agent"> Un agent</label></div></fieldset>
+      <label for="identifier">Identifiant</label><p class="field-hint" id="identifier-help">Numéro fiscal fictif ou identifiant agent de test.</p>
+      <input id="identifier" name="identifier" type="text" autocomplete="username" aria-describedby="identifier-help" required>
+      <label for="password">Mot de passe</label><div class="password-field"><input id="password" name="password" type="password" autocomplete="current-password" required><button type="button" class="reveal" aria-controls="password" aria-pressed="false">Afficher</button></div>
+      <button class="button full-width" type="submit">Me connecter <span aria-hidden="true">→</span></button>
+      <p class="notice" data-form-status role="status" hidden></p>
+    </fieldset></form>
+    <details><summary>Identifiant ou mot de passe oublié ?</summary><p>Pour cette démonstration, contactez votre équipe projet afin d’obtenir un compte de test. La récupération de compte n’est pas encore disponible.</p></details>
+  </section>
+  <aside class="auth-aside"><p class="eyebrow">SIMPLE ET CENTRALISÉ</p><h2>Vos services,<br>un seul espace.</h2><p>Retrouvez vos outils et accédez aux espaces du projet depuis un même portail.</p>
+    <ol class="steps"><li><span>1</span><div><strong>Identifiez-vous</strong><p>Avec votre compte de démonstration.</p></div></li><li><span>2</span><div><strong>Confirmez votre identité</strong><p>Une étape de vérification par e-mail.</p></div></li><li><span>3</span><div><strong>Accédez à vos services</strong><p>Selon les habilitations de votre compte.</p></div></li></ol>
+    <div class="notice"><strong>À propos de cette maquette</strong><p>L’authentification n’est pas encore connectée. Vous pouvez <a href="/code-gmail">prévisualiser la page de vérification</a>.</p></div>
+  </aside>
+</div>
+{% endblock %}

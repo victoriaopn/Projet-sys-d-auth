@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}DGFiP{% endblock %}</title>
-    <link rel="stylesheet" href="/static/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Accueil{% endblock %} — Les Jetons Fiscaux</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+  <script src="{{ url_for('static', path='/app.js') }}" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/">Accueil</a>
-            {% if user %}
-                <a href="/dashboard">Tableau de bord</a>
-                <a href="/declaration">Déclaration</a>
-                <a href="/profile">Profil</a>
-                <a href="/logout">Déconnexion</a>
-            {% else %}
-                <a href="/login">Connexion</a>
-                <a href="/register">Inscription</a>
-            {% endif %}
-        </nav>
-    </header>
-
-    <main>
-        {% if error %}
-            <div class="error-box">{{ error }}</div>
-        {% endif %}
-        {% block content %}{% endblock %}
-    </main>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/login" aria-label="Les Jetons Fiscaux, accueil">
+        <span class="tricolor" aria-hidden="true"></span>
+        <span class="brand-name">LES JETONS<br>FISCAUX <small>Finances publiques · Démonstration</small></span>
+      </a>
+      <span class="header-caption">Un accès unique à vos services</span>
+      <a class="button button-outline compact" href="/login">Mon espace</a>
+    </div>
+    <nav class="main-nav" aria-label="Navigation principale"><div class="container nav-inner">
+      <a href="/login" {% if page == 'login' %}aria-current="page"{% endif %}>Connexion</a>
+      <a href="/rh" {% if page == 'rh' %}aria-current="page"{% endif %}>Espace ressources humaines</a>
+      <a href="/it" {% if page == 'it' %}aria-current="page"{% endif %}>Espace informatique</a>
+    </div></nav>
+  </header>
+  <main id="contenu" class="container" tabindex="-1">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/login">Accueil</a><span aria-hidden="true">›</span><span>{% block breadcrumb %}Connexion{% endblock %}</span></nav>
+    {% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer"><div class="container footer-inner">
+    <div><strong>Les Jetons Fiscaux</strong>
+  </div></footer>
 </body>
 </html>
-
